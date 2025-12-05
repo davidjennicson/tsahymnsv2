@@ -1,0 +1,67 @@
+name: tsahymnsv5
+description: "Second version of the app"
+publish_to: 'none'
+
+version: 8.0.0+1
+
+environment:
+  sdk: ^3.8.1
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+  flutter_svg: ^2.0.9
+  provider: ^6.1.5
+  gradient_generator: ^1.1.0
+  sqflite: ^2.3.0
+  path: ^1.9.0
+  path_provider: ^2.1.1
+  flutter_markdown: ^0.6.18
+  share_plus: ^12.0.0
+  auto_size_text: ^3.0.0
+  shared_preferences: ^2.2.2
+  image: ^4.0.17
+  fuzzy: ^0.5.1
+  url_launcher: ^6.1.0
+  go_router: ^12.0.0  # or your preferred routing
+  flutter_launcher_icons: ^0.14.4
+  package_rename: ^1.5.3
+
+flutter_icons:
+  image_path: "assets/icons/applogofinal.png"
+  android: "launcher_icon" # can specify file name here e.g. "ic_launcher"
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/dtb.db
+    - assets/icons/tsa.svg
+
+  fonts:
+    - family: Inter
+      fonts:
+        - asset: assets/fonts/Inter.ttf
+
+    - family: SourceSerif4
+      fonts:
+        - asset: assets/fonts/SourceSerif4.ttf
+
+    - family: NotoSansTamil
+      fonts:
+        - asset: assets/fonts/NotoSansTamil.ttf
+
+# Android configuration with package name
+
+package_rename_config:
+  android:
+    package_name: com.app.tsasioniwt
+    app_name: Salvation Army Hymns
+
+# App name configuration for renaming
