@@ -21,103 +21,8 @@ Future<void> main() async {
 }
 
 // Create a GoRouter configuration
-final GoRouter _router = GoRouter(
-  navigatorKey: navigatorKey,
-  routes: [
-    GoRoute(
-      path: '/',
-      builder: (context, state) => const SplashScreen(),
-    ),
-    GoRoute(
-      path: '/home',
-      builder: (context, state) => const HomeScreen(),
-    ),
-    GoRoute(
-      path: '/bible/:bookId/:chapter',
-      builder: (context, state) {
-        final bookId = int.tryParse(state.pathParameters['bookId'] ?? '');
-        final chapter = int.tryParse(state.pathParameters['chapter'] ?? '');
-        final verse = int.tryParse(state.uri.queryParameters['verse'] ?? '');
 
-        // You'll need to pass the actual data here
-        // This is a simplified example - you'll need to fetch the actual book data
-        return BibleTextScreen(
-          bookName: _getBookName(bookId ?? 1),
-          chapter: chapter ?? 1,
-          verses: [], // You'll need to load these from your database
-          bookId: bookId ?? 1,
-          language: 'english', // You might want to get this from state
-          highlightVerse: verse,
-        );
-      },
-    ),
-  ],
-  errorBuilder: (context, state) => const ErrorScreen(),
-);
 
-String _getBookName(int bookId) {
-  // Map bookId to book name - you should implement this properly
-  final books = {
-    1: 'Genesis', 2: 'Exodus', 3: 'Leviticus', 4: 'Numbers', 5: 'Deuteronomy',
-    6: 'Joshua', 7: 'Judges', 8: 'Ruth', 9: '1 Samuel', 10: '2 Samuel',
-    11: '1 Kings', 12: '2 Kings', 13: '1 Chronicles', 14: '2 Chronicles',
-    15: 'Ezra', 16: 'Nehemiah', 17: 'Esther', 18: 'Job', 19: 'Psalms',
-    20: 'Proverbs', 21: 'Ecclesiastes', 22: 'Song of Solomon',
-    23: 'Isaiah', 24: 'Jeremiah', 25: 'Lamentations', 26: 'Ezekiel',
-    27: 'Daniel', 28: 'Hosea', 29: 'Joel', 30: 'Amos', 31: 'Obadiah',
-    32: 'Jonah', 33: 'Micah', 34: 'Nahum', 35: 'Habakkuk', 36: 'Zephaniah',
-    37: 'Haggai', 38: 'Zechariah', 39: 'Malachi', 40: 'Matthew',
-    41: 'Mark', 42: 'Luke', 43: 'John', 44: 'Acts', 45: 'Romans',
-    46: '1 Corinthians', 47: '2 Corinthians', 48: 'Galatians',
-    49: 'Ephesians', 50: 'Philippians', 51: 'Colossians',
-    52: '1 Thessalonians', 53: '2 Thessalonians', 54: '1 Timothy',
-    55: '2 Timothy', 56: 'Titus', 57: 'Philemon', 58: 'Hebrews',
-    59: 'James', 60: '1 Peter', 61: '2 Peter', 62: '1 John',
-    63: '2 John', 64: '3 John', 65: 'Jude', 66: 'Revelation',
-  };
-  return books[bookId] ?? 'Unknown Book';
-}
-
-class ErrorScreen extends StatelessWidget {
-  const ErrorScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return CupertinoPageScaffold(
-      navigationBar: const CupertinoNavigationBar(
-        middle: Text('Error'),
-      ),
-      child: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(
-              CupertinoIcons.exclamationmark_triangle,
-              size: 64,
-              color: CupertinoColors.systemGrey,
-            ),
-            const SizedBox(height: 16),
-            Text(
-              'Page not found',
-              style: CupertinoTheme.of(context).textTheme.navLargeTitleTextStyle,
-            ),
-            const SizedBox(height: 8),
-            Text(
-              'The requested page could not be found.',
-              style: CupertinoTheme.of(context).textTheme.textStyle,
-              textAlign: TextAlign.center,
-            ),
-            const SizedBox(height: 20),
-            CupertinoButton(
-              onPressed: () => context.go('/home'),
-              child: const Text('Go to Home'),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
 
 class BibleApp extends StatelessWidget {
   const BibleApp({super.key});
@@ -130,7 +35,6 @@ class BibleApp extends StatelessWidget {
         builder: (context, appState, child) {
           return CupertinoApp.router(
             title: 'Salvation Army Hymns',
-            routerConfig: _router,
             theme: CupertinoThemeData(
               brightness: appState.isDarkMode ? Brightness.dark : Brightness.light,
               primaryColor: const Color(0xFFEF4444),

@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "com.app.tsasioniwt"
+    namespace = "com.app.tsasioniwts"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 
@@ -21,7 +21,7 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId = "com.app.tsasioniwt"
+        applicationId = "com.app.tsasioniwts"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
         minSdk = flutter.minSdkVersion
@@ -43,7 +43,3 @@ flutter {
     source = "../.."
 }
 
-"C:\\Program Files\\Android\\Android Studio\\jbr\\bin\\keytool.exe" -list -v -keystore upload-keystore.jks
-TsAaion1976Mumbai
-"C:\Program Files\Android\Android Studio\jbr\bin\keytool.exe" -list -v -keystore upload-keystore.jks
-& "C:\Program Files\Android\Android Studio\jbr\bin\keytool.exe" -list -v -keystore "upload-keystore.jks"
